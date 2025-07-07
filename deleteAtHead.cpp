@@ -16,7 +16,7 @@ public:
     }
 };
 
-void deleteAtHead(Node *&head)
+void deleteAtHead(Node *&head, Node *&tail)
 {
     if (head == NULL)
     {
@@ -25,8 +25,17 @@ void deleteAtHead(Node *&head)
     else
     {
         Node *deleteNode = head;
-        head = head->nextPointer;
-        head->previousPointer = NULL;
+        if (head->nextPointer == NULL)
+        {
+            head = NULL;
+            tail = NULL;
+        }
+        else
+        {
+            head = head->nextPointer;
+            head->previousPointer = NULL;
+        }
+
         delete deleteNode;
     }
 }
@@ -53,7 +62,7 @@ int main()
     secondNode->nextPointer = tail;
     tail->previousPointer = secondNode;
 
-    deleteAtHead(head);
+    deleteAtHead(head, tail);
     printForward(head);
 
     return 0;
