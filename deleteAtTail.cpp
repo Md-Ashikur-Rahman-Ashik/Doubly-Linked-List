@@ -22,6 +22,14 @@ void deleteAtTail(Node *&head, Node *&tail)
     {
         return;
     }
+    else if (head->nextPointer == NULL)
+    {
+        Node *deleteNode = tail;
+        head = NULL;
+        tail = NULL;
+        delete deleteNode;
+        return;
+    }
 
     Node *deleteTail = tail;
     tail = tail->previousPointer;
