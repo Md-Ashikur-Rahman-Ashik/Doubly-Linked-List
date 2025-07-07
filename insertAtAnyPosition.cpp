@@ -41,18 +41,15 @@ void insertAtAnyPosition(Node *&head, Node *&tail, int desiredIndex, int desired
         tmp = tmp->nextPointer;
     }
 
-    if (tmp->nextPointer == tail)
-    {
-        newNode->nextPointer = tmp->nextPointer;
-        newNode->previousPointer = tmp;
-        tmp->nextPointer = newNode;
-        tail = newNode;
-        return;
-    }
-
     newNode->nextPointer = tmp->nextPointer;
     newNode->previousPointer = tmp;
     tmp->nextPointer = newNode;
+
+    if (tmp->nextPointer == tail)
+    {
+        tail = newNode;
+        return;
+    }
 }
 
 void printForward(Node *head)
