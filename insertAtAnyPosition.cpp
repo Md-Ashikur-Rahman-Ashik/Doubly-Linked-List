@@ -42,6 +42,7 @@ void insertAtAnyPosition(Node *&head, Node *&tail, int desiredIndex, int desired
     }
 
     newNode->nextPointer = tmp->nextPointer;
+    tmp->nextPointer->previousPointer = newNode;
     newNode->previousPointer = tmp;
     tmp->nextPointer = newNode;
 
